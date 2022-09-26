@@ -20,6 +20,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           children: <Widget>[
             Row(
               children: <Widget>[
+                /**
+                 * Hero Animation in welcome screen "widget : Page1()"
+                 */
                 Hero(
                   tag: "logo",
                   child: Container(
