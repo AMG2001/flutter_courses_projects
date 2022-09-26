@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "932395257939",
+    "project_id": "flash-chat-37226",
+    "storage_bucket": "flash-chat-37226.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:932395257939:android:2d5b0f69cab14426feb6a6",
+        "android_client_info": {
+          "package_name": "tech.mavica.flashchat.flash_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "932395257939-1crias2bfthvkv36pm6prpji2b5dmmh1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCz6gkSRP80iaRuCynUAv_wRQCAuOpWeek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "932395257939-1crias2bfthvkv36pm6prpji2b5dmmh1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
