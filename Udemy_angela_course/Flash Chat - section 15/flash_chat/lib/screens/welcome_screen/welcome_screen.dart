@@ -1,12 +1,7 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:flash_chat/config/pages_name/pages_name.dart';
-import 'package:flash_chat/screens/login_screen/login_screen.dart';
-import 'package:flash_chat/screens/registration_screen/registration_screen.dart';
 import 'package:flash_chat/screens/welcome_screen/welcome_screen_components/welcome_screen_header.dart';
 import 'package:flash_chat/screens/welcome_screen/welcome_screen_components/welcome_screen_login_button.dart';
 import 'package:flash_chat/screens/welcome_screen/welcome_screen_components/welcome_screen_register_button.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
