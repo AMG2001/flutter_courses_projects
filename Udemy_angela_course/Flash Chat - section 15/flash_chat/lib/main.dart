@@ -1,9 +1,9 @@
 import 'package:flash_chat/config/pages_name/pages_name.dart';
-import 'package:flash_chat/screens/chat_screen.dart';
-import 'package:flash_chat/screens/login_screen.dart';
-import 'package:flash_chat/screens/registration_screen.dart';
+import 'package:flash_chat/screens/chat_screen/chat_screen.dart';
+import 'package:flash_chat/screens/login_screen/login_screen.dart';
+import 'package:flash_chat/screens/registration_screen/registration_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flash_chat/screens/welcome_screen.dart';
+import 'package:flash_chat/screens/welcome_screen/welcome_screen.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -24,12 +24,38 @@ class FlashChat extends StatelessWidget {
       title: "Flash Chat",
       home: WelcomeScreen(),
       getPages: [
-        GetPage(name: PagesName.welcomePageName, page: () => WelcomeScreen()),
+        /**
+         * Welcome page
+         */
         GetPage(
-            name: PagesName.registrationPageName,
-            page: () => RegistrationScreen()),
-        GetPage(name: PagesName.loginPageName, page: () => LoginScreen()),
-        GetPage(name: PagesName.chatPageName, page: () => ChatScreen()),
+          name: PagesName.welcomePageName,
+          page: () => WelcomeScreen(),
+          transition: Transition.rightToLeft,
+        ),
+        /**
+         * Register page
+         */
+        GetPage(
+          name: PagesName.registrationPageName,
+          page: () => RegistrationScreen(),
+          transition: Transition.rightToLeft,
+        ),
+        /**
+         * Login page
+         */
+        GetPage(
+          name: PagesName.loginPageName,
+          page: () => LoginScreen(),
+          transition: Transition.rightToLeft,
+        ),
+        /**
+         * Chat page
+         */
+        GetPage(
+          name: PagesName.chatPageName,
+          page: () => ChatScreen(),
+          transition: Transition.rightToLeft,
+        ),
       ],
     );
   }
