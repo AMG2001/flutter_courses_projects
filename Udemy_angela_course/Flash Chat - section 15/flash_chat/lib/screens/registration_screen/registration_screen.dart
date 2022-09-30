@@ -15,9 +15,7 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
-  final _auth = FirebaseAuth.instance;
-  late String email;
-  late String password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,26 +27,21 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             RegisterPageHeader(),
-            RegisterPageEmailTF(email: email),
+            RegisterPageEmailTF(),
             const SizedBox(
               height: 8.0,
             ),
-            RegisterPagePasswordTF(password: password),
+            RegisterPagePasswordTF(),
             const SizedBox(
               height: 24.0,
             ),
             /***
              * Register User Button .
              */
-            RegisterPageRegisterButton(
-              auth: _auth,
-              email: email,
-              password: password,
-            )
+            RegisterPageRegisterButton()
           ],
         ),
       ),
     );
   }
 }
-

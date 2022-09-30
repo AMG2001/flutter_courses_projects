@@ -46,7 +46,7 @@ class FlashChat extends StatelessWidget {
         GetPage(
           name: PagesName.loginPageName,
           page: () => LoginScreen(),
-          transition: Transition.rightToLeft,
+          transition: Transition.leftToRight,
         ),
         /**
          * Chat page

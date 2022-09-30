@@ -1,8 +1,9 @@
+import 'package:flash_chat/screens/registration_screen/register_screen_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class RegisterPagePasswordTF extends StatelessWidget {
-  String password;
-  RegisterPagePasswordTF({required this.password});
+ final controller = Get.put(RegisterPageController(), permanent: true);
 
   @override
   Widget build(BuildContext context) {
@@ -10,9 +11,10 @@ class RegisterPagePasswordTF extends StatelessWidget {
              * Password Text Field
              */
         TextField(
+          obscureText: true,
       style: const TextStyle(color: Colors.black),
       onChanged: (value) {
-        password = value;
+        controller.setPassword(value);
       },
       decoration: const InputDecoration(
         hintText: 'Enter your password',

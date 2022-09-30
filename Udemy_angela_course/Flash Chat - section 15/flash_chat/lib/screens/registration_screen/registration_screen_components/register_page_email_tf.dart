@@ -1,9 +1,9 @@
+import 'package:flash_chat/screens/registration_screen/register_screen_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class RegisterPageEmailTF extends StatelessWidget {
-  String email;
-  RegisterPageEmailTF({required this.email});
-
+  final controller = Get.put(RegisterPageController(), permanent: true);
   @override
   Widget build(BuildContext context) {
     return /**
@@ -12,7 +12,7 @@ class RegisterPageEmailTF extends StatelessWidget {
         TextField(
       style: TextStyle(color: Colors.black),
       onChanged: (value) {
-        email = value;
+        controller.setEmail(value);
       },
       decoration: const InputDecoration(
         hintText: 'Enter your email',
