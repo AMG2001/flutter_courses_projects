@@ -31,15 +31,17 @@ class ChatPageController extends GetxController {
      */
     final messagesDocuments = await firebaseFireStoreInstance
         .collection("messages")
-        .get(); // get method return QuerySnapShot .
+        .snapshots(); // get method return QuerySnapShot .
     /**
          * from this query snapshot we need to get documents so
          * we will use get().docs .
          * now we get docs , we need to access it;s data so :
          * get().docs.data() // will return all maps that consider data
          */
-    for (var document in messagesDocuments.docs) {
-      print(document.data());
-    }
+    messagesDocuments.forEach((element) {
+      for (var document in element.docs) {
+        print(document.data());
+      }
+    });
   }
 }

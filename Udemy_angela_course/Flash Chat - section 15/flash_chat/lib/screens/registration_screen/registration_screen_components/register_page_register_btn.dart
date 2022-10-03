@@ -36,8 +36,11 @@ class RegisterPageRegisterButton extends StatelessWidget {
                             password: registerPageController.getPassword)
                         .then((value) {
                       controller.removeIndicator();
+                      Get.delete<LoadingIndicatorController>();
+
                       print("user id is : ${value.user!.uid}");
                       Get.offNamed(PagesName.chatPageName);
+                      Get.delete<RegisterPageController>();
                     });
                   } catch (e) {
                     print(e);
