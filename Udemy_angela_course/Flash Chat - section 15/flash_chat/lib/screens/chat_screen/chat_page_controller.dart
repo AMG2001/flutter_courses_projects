@@ -18,6 +18,7 @@ class ChatPageController extends GetxController {
       await firebaseFireStoreInstance.collection("messages").add({
         "text": message,
         "sender": FirebaseAuth.instance.currentUser!.email,
+        "createdAt":DateTime.now()
       }).then((value) => print("message sent"));
     } catch (e) {
       print("Uploading message Failed !!");

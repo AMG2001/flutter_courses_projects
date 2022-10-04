@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flash_chat/config/pages_name/pages_name.dart';
+import 'package:flash_chat/config/user_state.dart';
 import 'package:flash_chat/utilities/loading_indicator_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -118,6 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                * After signing in done , Navigate to Chat Page
                                */
                               controller.removeIndicator();
+                              UserState.userLoggedIn();
                               Get.offNamed(PagesName.chatPageName);
                             });
                           } catch (e) {

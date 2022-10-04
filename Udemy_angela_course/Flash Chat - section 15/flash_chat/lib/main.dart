@@ -1,4 +1,5 @@
 import 'package:flash_chat/config/pages_name/pages_name.dart';
+import 'package:flash_chat/config/user_state.dart';
 import 'package:flash_chat/screens/chat_screen/chat_screen.dart';
 import 'package:flash_chat/screens/login_screen/login_screen.dart';
 import 'package:flash_chat/screens/registration_screen/registration_screen.dart';
@@ -13,6 +14,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+    await UserState.init();
   runApp(FlashChat());
 }
 
@@ -22,7 +24,9 @@ class FlashChat extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Flash Chat",
-      home: WelcomeScreen(),
+      home: UserState.getUserLoogedState() == false
+          ? WelcomeScreen()
+          : ChatScreen(),
       getPages: [
         /**
          * Welcome page

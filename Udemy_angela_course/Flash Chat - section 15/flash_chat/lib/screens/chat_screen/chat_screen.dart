@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flash_chat/config/user_state.dart';
 import 'package:flash_chat/screens/chat_screen/chat_bubble.dart';
 import 'package:flash_chat/screens/chat_screen/chat_page_controller.dart';
 
@@ -14,7 +15,6 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final chatPageController = Get.put(ChatPageController(), permanent: true);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,10 +24,10 @@ class _ChatScreenState extends State<ChatScreen> {
           IconButton(
               icon: Icon(Icons.close),
               onPressed: () async {
-                // await FirebaseAuth.instance
-                //     .signOut()
-                //     .then((value) => Get.back());
-                chatPageController.getMessages();
+                await UserState.userLoggedOut();
+                await FirebaseAuth.instance
+                    .signOut()
+                    .then((value) => Get.back());
               }),
         ],
         title: Text('⚡️Chat'),
@@ -42,27 +42,38 @@ class _ChatScreenState extends State<ChatScreen> {
               StreamBuilder<QuerySnapshot>(
                   stream: chatPageController.firebaseFireStoreInstance
                       .collection("messages")
+                      .orderBy("createdAt")
                       .snapshots(),
                   builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: CircularProgressIndicator(color: Colors.white),
+                      );
+                    }
                     /**
                      * List of messages that fetched form firestore
                      */
+                    late bool currentUser;
                     List<ChatBubble> messagesList = [];
                     /**
                      * snapshot : 
                      */
-                    var querySnapshot = snapshot.data!.docs;
+                    var querySnapshot = snapshot.data!.docs.reversed;
                     /**
                    * get every document alone from the whole snapshot: 
                    */
                     querySnapshot.forEach((document) {
                       messagesList.add(ChatBubble(
-                          sender: document.get('sender'),
-                          message: document.get('text')));
+                        sender: document.get('sender'),
+                        message: document.get('text'),
+                        isMe: FirebaseAuth.instance.currentUser!.email ==
+                            document.get('sender'),
+                      ));
                     });
 
                     return Expanded(
                       child: ListView(
+                        reverse: true,
                         children: messagesList,
                       ),
                     );
