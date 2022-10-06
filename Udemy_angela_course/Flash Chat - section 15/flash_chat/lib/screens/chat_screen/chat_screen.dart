@@ -42,6 +42,9 @@ class _ChatScreenState extends State<ChatScreen> {
               StreamBuilder<QuerySnapshot>(
                   stream: chatPageController.firebaseFireStoreInstance
                       .collection("messages")
+                      /**
+                       * Order by time that we added into every message
+                       */
                       .orderBy("createdAt")
                       .snapshots(),
                   builder: (context, snapshot) {
@@ -57,6 +60,9 @@ class _ChatScreenState extends State<ChatScreen> {
                     List<ChatBubble> messagesList = [];
                     /**
                      * snapshot : 
+                     */
+                    /**
+                     * here we reversed docs that come with snap shot to make it showen in right order -> 
                      */
                     var querySnapshot = snapshot.data!.docs.reversed;
                     /**
