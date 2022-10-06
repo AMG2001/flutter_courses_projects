@@ -1,12 +1,18 @@
 import 'package:sqflite/sqflite.dart';
 
-class Database {
+class DatabaseClass {
   static String _databasename = "todo.db";
+  static late Database databaseObject;
+  static String _tableName = "tasks";
+
+  /**
+   * create and open database
+   */
   static void createDatabase() async {
     /**
      * 
      */
-    var database = await openDatabase(
+    databaseObject = (await openDatabase(
       _databasename,
       /**
      * it's our first time to create DB without any editings so we will give it version : 1
@@ -22,13 +28,41 @@ class Database {
            */
         await db
             .execute(
-                "CREATE TABLE tasks(id INTEGER PRIMARY KEY AUTO_INCREMENT , title TEXT ,date TEXT,time TEXT , status TEXT)")
+                "CREATE TABLE $_tableName(id INTEGER PRIMARY KEY , title TEXT ,date TEXT,time TEXT , status TEXT)")
             .then((value) => print("table Created Successfully # "))
             .onError((error, stackTrace) => print(error));
       }),
       onOpen: (db) {
         print("Database opened");
       },
-    );
+    ));
+  }
+
+/**
+ *  insert into database
+ */
+  static Future<void> insertIntoDatabase(
+      {required String title,
+      required String date,
+      required String time,
+      required String status}) async {
+    // Insert some records in a transaction
+    await databaseObject.transaction((txn) async {
+      await txn
+          .rawInsert(
+              'INSERT INTO $_tableName(title, date, time,status) VALUES("$title", "$date","$time","$status")')
+          .then((value) => print("Insert record Done successfully #"))
+          .onError((error, stackTrace) => print(error));
+    });
+  }
+
+/**
+ * Show all records in database
+ */
+  static Future<void> showDatabase() async {
+    await databaseObject
+        .rawQuery("select * from $_tableName")
+        .then((value) => print(value))
+        .onError((error, stackTrace) => print(error));
   }
 }
