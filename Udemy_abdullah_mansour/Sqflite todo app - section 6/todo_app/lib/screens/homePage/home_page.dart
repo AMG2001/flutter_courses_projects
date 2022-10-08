@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
+import 'package:lottie/lottie.dart';
 import 'package:todo_app/screens/archived_screen.dart';
 import 'package:todo_app/screens/done_screen.dart';
 import 'package:todo_app/screens/homePage/home_page_components/date_picker_text_field.dart';
@@ -145,36 +145,61 @@ class _HomePageState extends State<HomePage> {
                                   ],
                                 )),
                             ElevatedButton(
-                                style: ButtonStyle(
-                                  textStyle:
-                                      MaterialStateProperty.all<TextStyle>(
-                                          TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w500)),
-                                  backgroundColor:
-                                      MaterialStateProperty.all<Color>(
-                                          Colors.purple),
-                                  shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(24),
-                                    ),
+                              style: ButtonStyle(
+                                textStyle: MaterialStateProperty.all<TextStyle>(
+                                    TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500)),
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.purple),
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(24),
                                   ),
                                 ),
-                                onPressed: () {
-                                  if (_formKey.currentState!.validate()) {
-                                    // TODO insert task into database
-                                  }
-                                },
-                                child: Row(
-                                  children: [
-                                    Text("Add Task"),
-                                    SizedBox(
-                                      width: 8,
-                                    ),
-                                    Icon(Icons.done_all_outlined)
-                                  ],
-                                )),
+                              ),
+                              onPressed: () async {
+                                if (_formKey.currentState!.validate()) {
+                                  // TODO insert task into database
+                                  await DatabaseClass.insertIntoDatabase(
+                                      title: _taskTitleController.text,
+                                      date: _taskDateController.text,
+                                      time: _taskTimeController.text,
+                                      status: "not finished");
+
+                                  _taskTitleController.clear();
+                                  _taskTimeController.clear();
+                                  _taskDateController.clear();
+                                  Get.back();
+                                
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        Future.delayed(
+                                            Duration(milliseconds: 1500), () {
+                                          Navigator.pop(context);
+                                        });
+                                        return Center(
+                                          child: Lottie.asset(
+                                              'assets/success.json',
+                                              repeat: false),
+                                        );
+                                      });
+                                
+                                }
+                              },
+                              child: Row(
+                                children: [
+                                  Text("Add Task"),
+                                  SizedBox(
+                                    width: 8,
+                                  ),
+                                  Icon(Icons.done_all_outlined)
+                                ],
+                              ),
+                            ),
                           ],
                         )
                       ],
