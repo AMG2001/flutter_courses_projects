@@ -4,7 +4,6 @@ import 'package:getx_learn/home_page_controller.dart';
 
 class HomePage extends StatelessWidget {
   final homePageController = Get.put(HomePageController());
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

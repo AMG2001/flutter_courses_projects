@@ -4,15 +4,15 @@ class DatabaseClass {
   static String _databasename = "todo.db";
   static late Database databaseObject;
   static String _tableName = "tasks";
-
+  static List<Map<String, dynamic>> records = [];
   /**
    * create and open database
    */
-  static void createDatabase() async {
+  static Future<void> createDatabase() async {
     /**
      * 
      */
-    databaseObject = (await openDatabase(
+    (await openDatabase(
       _databasename,
       /**
      * it's our first time to create DB without any editings so we will give it version : 1
@@ -32,10 +32,10 @@ class DatabaseClass {
             .then((value) => print("table Created Successfully # "))
             .onError((error, stackTrace) => print(error));
       }),
-      onOpen: (db) {
-        print("Database opened");
+      onOpen: (db) async {
+        await showDatabaseRecordes().then((value) => records = value);
       },
-    ));
+    ).then((value) => databaseObject = value));
   }
 
 /**
@@ -59,10 +59,11 @@ class DatabaseClass {
 /**
  * Show all records in database
  */
-  static Future<void> showDatabase() async {
-    await databaseObject
+  static Future<List<Map<String, dynamic>>> showDatabaseRecordes() async {
+    List<Map<String, dynamic>> data = await databaseObject
         .rawQuery("select * from $_tableName")
-        .then((value) => print(value))
-        .onError((error, stackTrace) => print(error));
+        .then((value) => records = value)
+        .catchError((error, stackTrace) => print(error.toString()));
+    return data;
   }
 }

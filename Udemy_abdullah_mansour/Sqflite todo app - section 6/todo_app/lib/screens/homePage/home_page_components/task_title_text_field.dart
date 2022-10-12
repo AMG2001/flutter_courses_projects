@@ -17,6 +17,11 @@ class TaskTitleTextField extends StatelessWidget {
       width: width,
       padding: EdgeInsets.all(16),
       child: TextFormField(
+        validator: (value) {
+          if (value == null || value == "") {
+            return "You can't leave this field empty !!";
+          }
+        },
         controller: controller,
         decoration: InputDecoration(
           labelText: title,
