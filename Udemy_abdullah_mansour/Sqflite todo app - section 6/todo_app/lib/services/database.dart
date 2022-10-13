@@ -32,9 +32,7 @@ class DatabaseClass {
             .then((value) => print("table Created Successfully # "))
             .onError((error, stackTrace) => print(error));
       }),
-      onOpen: (db) async {
-        await showDatabaseRecordes().then((value) => records = value);
-      },
+      onOpen: (db) async {},
     ).then((value) => databaseObject = value));
   }
 
@@ -65,5 +63,10 @@ class DatabaseClass {
         .then((value) => records = value)
         .catchError((error, stackTrace) => print(error.toString()));
     return data;
+  }
+
+  static Future<void> deleteTaskFormDatabase(int id) async{
+   await databaseObject
+    .rawDelete('DELETE FROM $_tableName WHERE id = $id');
   }
 }

@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:todo_app/screens/homePage/tasks_screen/tasks_screen_controller.dart';
+import 'package:todo_app/services/database.dart';
 
 class TaskCard extends StatelessWidget {
+  final tasksScreenController = Get.put(TasksScreenController());
   String taskTitle;
   String taskDescription;
   String taskTime;
-  TaskCard({required this.taskTitle,required this.taskDescription,required this.taskTime});
+  int id;
+  TaskCard(
+      {required this.id,
+      required this.taskTitle,
+      required this.taskDescription,
+      required this.taskTime});
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +67,9 @@ class TaskCard extends StatelessWidget {
                     size: 28,
                     color: Colors.red,
                   ),
-                  onPressed: () {},
+                  onPressed: () async {
+                   await tasksScreenController.deleteTask(id: id);
+                  },
                 ),
               ],
             ),

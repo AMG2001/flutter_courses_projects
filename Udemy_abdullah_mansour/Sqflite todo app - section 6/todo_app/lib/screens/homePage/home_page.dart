@@ -6,7 +6,7 @@ import 'package:todo_app/screens/done_screen.dart';
 
 import 'package:todo_app/screens/homePage/home_page_components/home_page_controller.dart';
 
-import 'package:todo_app/screens/tasks_screen.dart';
+import 'package:todo_app/screens/homePage/tasks_screen/tasks_screen.dart';
 import 'package:todo_app/services/database.dart';
 
 class HomePage extends StatefulWidget {

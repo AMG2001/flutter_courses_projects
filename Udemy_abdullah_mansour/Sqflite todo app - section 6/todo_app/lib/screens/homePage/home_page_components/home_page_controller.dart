@@ -5,6 +5,8 @@ import 'package:todo_app/screens/homePage/home_page_components/date_picker_text_
 import 'package:todo_app/screens/homePage/home_page_components/grey_shift_slider.dart';
 import 'package:todo_app/screens/homePage/home_page_components/task_title_text_field.dart';
 import 'package:todo_app/screens/homePage/home_page_components/time_picker_text_field.dart';
+import 'package:todo_app/screens/homePage/tasks_screen/tasks_screen.dart';
+import 'package:todo_app/screens/homePage/tasks_screen/tasks_screen_controller.dart';
 import 'package:todo_app/services/database.dart';
 
 class HomePageController extends GetxController {
@@ -15,6 +17,8 @@ class HomePageController extends GetxController {
   TextEditingController taskDateController = TextEditingController();
   // List<Task> list = [];
   HomePageController({required this.context});
+
+  final tasksScreenController = Get.put(TasksScreenController());
 
   /**
    * When you want to ad new task , show bottom sheet and enter your new task
@@ -134,18 +138,15 @@ class HomePageController extends GetxController {
                         ),
                         onPressed: () async {
                           if (formKey.currentState!.validate()) {
-                            // TODO insert task into database
-                            await DatabaseClass.insertIntoDatabase(
-                                title: taskTitleController.text,
-                                date: taskDateController.text,
-                                time: taskTimeController.text,
-                                status: "not finished");
-
+                            await tasksScreenController.insertNewTask(
+                                taskTitleController: taskTitleController,
+                                taskTimeController: taskTimeController,
+                                taskDateController: taskDateController);
                             taskTitleController.clear();
                             taskTimeController.clear();
                             taskDateController.clear();
                             Get.back();
-                            await DatabaseClass.showDatabaseRecordes();
+
 /**
  * after process finished , show Success Animation .
  */
