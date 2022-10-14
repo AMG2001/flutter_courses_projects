@@ -4,19 +4,19 @@ import 'package:get/get.dart';
 import 'package:todo_app/screens/archived_screen.dart';
 import 'package:todo_app/screens/done_screen.dart';
 
-import 'package:todo_app/screens/homePage/home_page_components/home_page_controller.dart';
+import 'package:todo_app/screens/todo_homePage/todo_home_page_components/home_page_controller.dart';
 
-import 'package:todo_app/screens/homePage/tasks_screen/tasks_screen.dart';
+import 'package:todo_app/screens/todo_homePage/tasks_screen/tasks_screen.dart';
 import 'package:todo_app/services/database.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class TodoHomePage extends StatefulWidget {
+  const TodoHomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<TodoHomePage> createState() => _TodoHomePage();
 }
 
-class _HomePageState extends State<HomePage> {
+class _TodoHomePage extends State<TodoHomePage> {
   List<Widget> _screens = [TasksScreen(), DoneScreen(), ArchivedScreen()];
   List<String> _screenTitle = ["New Tasks", "Done Tasks", "Archived Tasks"];
   int _currentIndex = 0;

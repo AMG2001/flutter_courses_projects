@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:todo_app/screens/homePage/home_page_components/task_card.dart';
-import 'package:todo_app/screens/homePage/tasks_screen/tasks_screen_controller.dart';
+import 'package:todo_app/screens/todo_homePage/todo_home_page_components/task_card.dart';
+import 'package:todo_app/screens/todo_homePage/tasks_screen/tasks_screen_controller.dart';
 
 class TasksScreen extends StatelessWidget {
   @override

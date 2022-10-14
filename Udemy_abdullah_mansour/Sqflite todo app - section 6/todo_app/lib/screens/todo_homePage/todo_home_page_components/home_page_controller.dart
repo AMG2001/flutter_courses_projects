@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:todo_app/screens/homePage/home_page_components/date_picker_text_field.dart';
-import 'package:todo_app/screens/homePage/home_page_components/grey_shift_slider.dart';
-import 'package:todo_app/screens/homePage/home_page_components/task_title_text_field.dart';
-import 'package:todo_app/screens/homePage/home_page_components/time_picker_text_field.dart';
-import 'package:todo_app/screens/homePage/tasks_screen/tasks_screen.dart';
-import 'package:todo_app/screens/homePage/tasks_screen/tasks_screen_controller.dart';
+import 'package:todo_app/screens/todo_homePage/todo_home_page_components/date_picker_text_field.dart';
+import 'package:todo_app/screens/todo_homePage/todo_home_page_components/grey_shift_slider.dart';
+import 'package:todo_app/screens/todo_homePage/todo_home_page_components/task_title_text_field.dart';
+import 'package:todo_app/screens/todo_homePage/todo_home_page_components/time_picker_text_field.dart';
+import 'package:todo_app/screens/todo_homePage/tasks_screen/tasks_screen.dart';
+import 'package:todo_app/screens/todo_homePage/tasks_screen/tasks_screen_controller.dart';
 import 'package:todo_app/services/database.dart';
 
 class HomePageController extends GetxController {

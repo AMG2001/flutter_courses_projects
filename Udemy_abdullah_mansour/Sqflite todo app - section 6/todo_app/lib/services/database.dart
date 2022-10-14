@@ -1,6 +1,6 @@
 import 'package:sqflite/sqflite.dart';
 
-class DatabaseClass {
+class TodoDatabaseClass {
   static String _databasename = "todo.db";
   static late Database databaseObject;
   static String _tableName = "tasks";

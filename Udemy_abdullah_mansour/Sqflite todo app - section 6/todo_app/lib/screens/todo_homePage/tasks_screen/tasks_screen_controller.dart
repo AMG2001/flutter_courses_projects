@@ -11,7 +11,7 @@ class TasksScreenController extends GetxController {
     required TextEditingController taskTimeController,
   }) async {
     // TODO insert task into database
-    await DatabaseClass.insertIntoDatabase(
+    await TodoDatabaseClass.insertIntoDatabase(
         title: taskTitleController.text,
         date: taskDateController.text,
         time: taskTimeController.text,
@@ -21,11 +21,11 @@ class TasksScreenController extends GetxController {
   }
 
   Future<void> refreshTasksList() async {
-    tasks = await DatabaseClass.showDatabaseRecordes();
+    tasks = await TodoDatabaseClass.showDatabaseRecordes();
   }
 
   Future<void> deleteTask({required int id}) async {
-    await DatabaseClass.deleteTaskFormDatabase(id);
+    await TodoDatabaseClass.deleteTaskFormDatabase(id);
     await refreshTasksList();
     update();
   }

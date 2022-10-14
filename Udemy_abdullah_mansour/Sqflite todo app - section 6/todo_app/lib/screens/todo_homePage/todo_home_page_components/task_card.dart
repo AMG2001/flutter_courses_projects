@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:todo_app/screens/homePage/tasks_screen/tasks_screen_controller.dart';
+import 'package:todo_app/screens/todo_homePage/tasks_screen/tasks_screen_controller.dart';
 import 'package:todo_app/services/database.dart';
 
 class TaskCard extends StatelessWidget {
