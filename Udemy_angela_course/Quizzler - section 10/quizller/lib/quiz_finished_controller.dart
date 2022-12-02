@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quizller/dimensions.dart';
 import 'package:quizller/main.dart';
 import 'package:quizller/questions_controller.dart';
 
@@ -10,11 +11,11 @@ class QuizFinishedController extends GetxController {
   QuizFinishedController() {
     changeContainerSize();
   }
-  double containerWidth = Get.width * .5;
+  double containerWidth = Dimensions.width * .5;
 
-  double containerHeight = Get.height * .25;
+  double containerHeight = Dimensions.height * .25;
 
-  double iconHeight = Get.height * .25;
+  double iconHeight = Dimensions.height * .25;
 
   bool changed = false;
 
@@ -26,11 +27,11 @@ class QuizFinishedController extends GetxController {
 
   void changeContainerSize() async {
     await Future.delayed(
-      Duration(seconds: 3),
+      Duration(seconds: 1),
       () {
-        containerWidth = Get.width * .75;
-        containerHeight = Get.height * .5;
-        iconHeight = Get.height * .3;
+        containerWidth = Dimensions.width * .75;
+        containerHeight = Dimensions.height * .5;
+        iconHeight = Dimensions.height * .3;
 
         text = Text("Quiz finished");
         sizedBox = SizedBox(
@@ -38,8 +39,8 @@ class QuizFinishedController extends GetxController {
         );
         againButton = ElevatedButton(
             onPressed: () {
+                 Get.back();
               questionsController.resetQuiz();
-              Get.off(QuizPage());
             },
             child: Text("Solve Quiz again"));
         update();
