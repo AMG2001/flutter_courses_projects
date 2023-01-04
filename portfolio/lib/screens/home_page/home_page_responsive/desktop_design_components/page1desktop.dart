@@ -1,13 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/config/device_info.dart';
 import 'package:lottie/lottie.dart';
+import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 
 class Page1Desktop extends StatelessWidget {
   const Page1Desktop({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Container(
+      width: Dimensions.deviceWidth,
+      height: Dimensions.deviceHeight,
+      decoration: BoxDecoration(
+          image: DecorationImage(image: Svg("assets/images/i1.svg"))),
+    );
+  }
+}
+
+
+/**
+ * Stack(
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -31,5 +43,4 @@ class Page1Desktop extends StatelessWidget {
         ),
       ],
     );
-  }
-}
+ */

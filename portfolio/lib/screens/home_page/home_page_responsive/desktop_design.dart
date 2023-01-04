@@ -115,7 +115,7 @@ class _DesktopDesignState extends State<DesktopDesign> {
         title: Image(
           image: AssetImage(NavBarImagesPaths.amgadLogo),
           fit: BoxFit.cover,
-          width: Dimentsions.deviceWidth * .12,
+          width: Dimensions.deviceWidth * .12,
         ),
       ),
       body: PageView.builder(

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter_device_type/flutter_device_type.dart';
 
-class Dimentsions {
+class Dimensions {
   /**
    * TODO :
    * 3. add header with logo and actions

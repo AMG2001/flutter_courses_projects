@@ -8,13 +8,13 @@ class Page3Desktop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Dimentsions.deviceWidth,
-      height: Dimentsions.deviceHeight,
+      width: Dimensions.deviceWidth,
+      height: Dimensions.deviceHeight,
       child: Stack(
         children: [
           Container(
-              width: Dimentsions.deviceWidth,
-              height: Dimentsions.deviceHeight,
+              width: Dimensions.deviceWidth,
+              height: Dimensions.deviceHeight,
               child: SvgPicture.asset('assets/images/Mine_Iconic_Image.svg')),
         ],
       ),

@@ -1,9 +1,14 @@
 import 'package:portfolio/config/device_info.dart';
+import 'package:portfolio/core/images_paths/main_page_images_paths.dart';
 import 'package:portfolio/core/images_paths/navbar_images_paths.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio/screens/home_page/home_page_responsive/mobile_design_components/iconic_image.dart';
+import 'package:portfolio/screens/home_page/home_page_responsive/mobile_design_components/stars_section.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_svg_provider/flutter_svg_provider.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class MobileDesign extends StatelessWidget {
   final Uri githubUrl = Uri.parse('https://github.com/MavicaSoftwareDev');
@@ -53,37 +58,14 @@ class MobileDesign extends StatelessWidget {
         title: Image(
           image: AssetImage(NavBarImagesPaths.amgadLogo),
           fit: BoxFit.cover,
-          width: Dimentsions.deviceWidth * .35,
+          width: Dimensions.deviceWidth * .35,
         ),
       ),
       body: ListView(
         children: [
-          Container(
-            width: Dimentsions.deviceWidth,
-            height: Dimentsions.deviceHeight * 7.5,
-            child: Stack(
-              children: [
-                Container(
-                  height: Dimentsions.deviceHeight * 7.5,
-                  width: Dimentsions.deviceWidth,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.fitWidth,
-                      alignment: Alignment.topCenter,
-                      image: AssetImage("assets/images/screen_1_mobile.png"),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  top: Dimentsions.deviceHeight * .02,
-                  left: Dimentsions.deviceWidth * .4,
-                  child: Lottie.network(
-                      "https://assets4.lottiefiles.com/packages/lf20_96bovdur.json",
-                      width: Dimentsions.deviceWidth * .4),
-                ),
-              ],
-            ),
-          ),
+          Stack(
+            children: [IconicImage(), StarsSection()],
+          )
         ],
       ),
     );

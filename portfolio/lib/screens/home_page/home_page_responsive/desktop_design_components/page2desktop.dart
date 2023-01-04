@@ -7,8 +7,8 @@ class Page2Desktop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Dimentsions.deviceWidth,
-      height: Dimentsions.deviceHeight,
+      width: Dimensions.deviceWidth,
+      height: Dimensions.deviceHeight,
       decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage('assets/images/Desktop_screen_2.png'))),
